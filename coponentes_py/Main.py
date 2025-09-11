@@ -1,41 +1,40 @@
-import tkinter as tk
-from tkinter import ttk, Frame
-from login import login
-from login import register
+from tkinter import *
+from tkinter import ttk
+from login import Login
+from login import Register
 from container import Container
+import sys
+import os
 
-class Main(tk.Tk):
-    def __init__(self):
-        super().__init__()
-
-        # Título
+class Main(Tk):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
         self.title("_nombre empresa_")
-
-        # Pantalla completa
-        self.state("zoomed")  # Windows maximizado
-
-        # Contenedor principal
-        container = Frame(self)
+        self.geometry("1100x650+120+20")
+        self.resizable(False,False)
+    
+        container= Frame(self)
+        container.pack(side=TOP,fill=BOTH,expand=True)
         container.configure(bg="#C6D9E3")
-        container.pack(fill="both", expand=True)
 
         self.frames = {}
-        for F in (login, register, Container):
-            frame = F(container, self)
-            self.frames[F] = frame
-            frame.grid(row=0, column=0, sticky="nsew")
+        for f in (Login,Register,Container):
+            frame = f(container,self)
+            self.frames[f] = frame
 
-        # Mostrar login al inicio
-        self.show_frame(login)
+        self.show_frame(Container)
 
-        # Estilo ttk
         self.style = ttk.Style()
         self.style.theme_use("clam")
 
-    def show_frame(self, frame_class):
-        self.frames[frame_class].tkraise()
+    def show_frame(self,container):
+        frame = self.frames[container]
+        frame.tkraise()
 
+    def main():
+        app = Main()
+        app.mainloop()
 
-if __name__ == "__main__":
-    app = Main()
-    app.mainloop()
+    if __name__ == "__main__":
+        main()
+        

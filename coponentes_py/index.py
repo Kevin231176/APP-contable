@@ -1,6 +1,6 @@
 
-from Main import Main
+from main import Main
 
-if  __name__ == "__Main__":
+if  __name__ == "__main__":
     app=Main()
     app.mainloop()

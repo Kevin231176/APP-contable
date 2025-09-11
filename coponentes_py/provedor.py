@@ -9,4 +9,5 @@ class Provedor(tk.Frame):
         self.widgets()
 
     def widgets(self):
-        pass
+        label = Label(self,text="Provedor")
+        label.pack()
