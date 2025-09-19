@@ -9,10 +9,14 @@ import os
 class Main(Tk):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
-        self.title("_nombre empresa_")
+        self.title("Autopartes Nuevo Horizonte B. V.0.0.1")
         self.geometry("1100x650+120+20")
         self.resizable(False,False)
-    
+
+      
+        self.iconbitmap("coponentes_py/imagenes/8412987-apli-ico.ico")
+
+        
         container= Frame(self)
         container.pack(side=TOP,fill=BOTH,expand=True)
         container.configure(bg="#C6D9E3")
@@ -22,7 +26,7 @@ class Main(Tk):
             frame = f(container,self)
             self.frames[f] = frame
 
-        self.show_frame(Container)
+        self.show_frame(Login)
 
         self.style = ttk.Style()
         self.style.theme_use("clam")
@@ -35,5 +39,5 @@ def main():
     app = Main()
     app.mainloop()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
